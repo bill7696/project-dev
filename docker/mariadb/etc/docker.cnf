@@ -13,6 +13,11 @@ skip-character-set-client-handshake
 
 transaction-isolation  = READ-COMMITTED
 
+log-bin=mysql-bin # binlog파일명
+binlog_cache_size = 2M #바이너리 로그 캐시 사이즈
+max_binlog_size = 1024M #바이너리 로그 최대 사이즈
+expire_logs_days = 30 #보관 기간(만료기간)
+
 [client]
 default-character-set = utf8
 
