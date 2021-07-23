@@ -1,0 +1,55 @@
+version: '3'
+ 
+services:
+    mariadb:
+        image: mariadb:latest
+        container_name: mariadb
+        env_file: 
+            - .env
+        volumes:
+            - ./etc/docker.cnf:/etc/mysql/conf.d/docker.cnf
+            - mariadb:/var/lib/mysql
+        ports:
+            - "3306:3306"
+        networks:
+            - docker-network
+
+    # mariadb1:
+    #     image: mariadb:latest
+    #     container_name: "mariadb1"
+    #     environment:
+    #         MYSQL_ROOT_PASSWORD: 'sun@122800!!'
+    #     volumes:
+    #         - ./etc/mysql:/etc/mysql
+    #         - mariadb1:/var/lib/mysql
+    #     ports:
+    #         - "3306:3306"
+    #     networks:
+    #         - docker-network
+
+    # mariadb2:
+    #     image: mariadb:latest
+    #     container_name: "mariadb2"
+    #     environment:
+    #         MYSQL_ROOT_PASSWORD: 'sun@122800!!'
+    #     volumes:
+    #         - ./etc/mysql:/etc/mysql
+    #         - mariadb2:/var/lib/mysql
+    #     ports:
+    #         - "3306:3306"
+    #     networks:
+    #         - docker-network
+
+
+# osx
+volumes:
+    mariadb:   
+        external: true
+    # mariadb1:   
+    #     external: true
+    # mariadb2:   
+    #     external: true                
+
+networks:
+    docker-network: 
+        external: true
